@@ -36,7 +36,7 @@ class IngredientsMenu:
     def show_meat(self):
         self.meat = ["Говядина", "Свинина", "Курица", "Баранина", "Утка"]
         print("Список мяса:")
-        for index, meat_type in enumerate(meat, start=1):
+        for index, meat_type in enumerate(self.meat, start=1):
             print(f"{index}. {meat_type}")
 
     def show_vegetables(self):
@@ -49,7 +49,7 @@ class IngredientsMenu:
         print("Выбери категорию продуктов. Введи ссответствующее число")
 
     def get_vegetables(self):
-        selected_vegetables = []
+        self.selected_vegetables = []
         print("Введите номер продукта, который необходимо использовать. Для завершения выбора нажми enter")
         while True:
             user_input = input()
@@ -58,19 +58,27 @@ class IngredientsMenu:
             try:
                 vegetable_index = int(user_input) - 1
                 if 0 <= vegetable_index <=len(self.vegetables):
-                    selected_vegetables.append(self.vegetables[vegetable_index])
+                    self.selected_vegetables.append(self.vegetables[vegetable_index])
                 else:
                     print("Выбери продукт из списка")
             except ValueError:
                 print("Выбери продукт из списка, введи число")
-        print(f"твой список овощей: {selected_vegetables}.Всё верно?")
+        print(f"твой список овощей: {self.selected_vegetables}.Всё верно?")
         answer = input().lower()
         if answer.startswith("д"):
-            print("Выбери другие ингредиенты")
-            ingredients_menu.show_menu()
+            print("Выбрать другие ингредиенты?")
+            answer = input().lower()
+            if answer.startswith("д"):
+                ingredients_menu.show_menu()
+            else:
+                print("Завершить выбор продуктов?")
+                answer = input().lower()
+                if answer.startswith("д"):
+                    print("Твой набор продуктов:")
+                    ingredients_menu.show_selected_ingredients()
 
     def get_meat(self):
-        selected_meat = []
+        self.selected_meat = []
         print("Введите номер продукта, который необходимо использовать. Для завершения выбора нажми enter")
         while True:
             user_input = input()
@@ -79,19 +87,26 @@ class IngredientsMenu:
             try:
                 meat_index = int(user_input) - 1
                 if 0 <= meat_index <=len(self.meat):
-                    selected_meat.append(self.meat[meat_index])
+                    self.selected_meat.append(self.meat[meat_index])
                 else:
                     print("Выбери продукт из списка")
             except ValueError:
                 print("Выбери продукт из списка, введи число")
-        print(f"твой список мяса: {selected_meat}.Всё верно?")
+        print(f"твой список мяса: {self.selected_meat}.Всё верно?")
         answer = input().lower()
         if answer.startswith("д"):
-            print("Выбери другие ингредиенты")
-            ingredients_menu.show_menu()
-
+            print("Выбрать другие ингредиенты?")
+            answer = input().lower()
+            if answer.startswith("д"):
+                ingredients_menu.show_menu()
+            else:
+                print("Завершить выбор продуктов?")
+                answer = input().lower()
+                if answer.startswith("д"):
+                    print("Твой набор продуктов:")
+                    ingredients_menu.show_selected_ingredients()
     def get_grains(self):
-        selected_grains = []
+        self.selected_grains = []
         print("Введите номер продукта, который необходимо использовать. Для завершения выбора нажми enter")
         while True:
             user_input = input()
@@ -100,16 +115,29 @@ class IngredientsMenu:
             try:
                 grains_index = int(user_input) - 1
                 if 0 <= grains_index <=len(self.grains):
-                    selected_grains.append(self.grains[grains_index])
+                    self.selected_grains.append(self.grains[grains_index])
                 else:
                     print("Выбери продукт из списка")
             except ValueError:
                 print("Выбери продукт из списка, введи число")
-        print(f"твой список круп: {selected_grains}.Всё верно?")
+        print(f"твой список круп: {self.selected_grains}.Всё верно?")
         answer = input().lower()
         if answer.startswith("д"):
-            print("Выбери другие ингредиенты")
-            ingredients_menu.show_menu()
+            print("Выбрать другие ингредиенты?")
+            answer = input().lower()
+            if answer.startswith("д"):
+                ingredients_menu.show_menu()
+            else:
+                print("Завершить выбор продуктов?")
+                answer = input().lower()
+                if answer.startswith("д"):
+                    print("Твой набор продуктов:")
+                    ingredients_menu.show_selected_ingredients()
+    def show_selected_ingredients(self):
+        print(self.selected_meat)
+        print(self.selected_vegetables)
+        print(self.selected_grains)
+
 
     def __str__(self):
         print('Приходи, когда нужен будет совет!')
