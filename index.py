@@ -375,10 +375,16 @@ class IngredientsMenu:
                 self.summury_ingredietns.append(i)
             print("Мясо:", self.selected_meat)
         if hasattr(self, 'selected_vegetables'):
+            for i in self.selected_vegetables:
+                self.summury_ingredietns.append(i)
             print("Овощи:", self.selected_vegetables)
         if hasattr(self, 'selected_grains'):
+            for i in self.selected_grains:
+                self.summury_ingredietns.append(i)
             print("Крупы:", self.selected_grains)
         if hasattr(self, 'selected_spices'):
+            for i in self.selected_spices:
+                self.summury_ingredietns.append(i)
             print("Специи:", self.selected_spices)
 
 
