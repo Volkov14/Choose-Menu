@@ -198,7 +198,7 @@ class IngredientsMenu:
 
 ingredients_menu = IngredientsMenu()
 ingredients_menu.show_menu()
-=======
+
 class IngredientsMenu:
     def show_menu(self):
         print("Показать список ингридиентов?(напиши 'да/нет')")
