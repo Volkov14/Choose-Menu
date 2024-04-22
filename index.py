@@ -198,7 +198,7 @@ class IngredientsMenu:
 
 ingredients_menu = IngredientsMenu()
 ingredients_menu.show_menu()
-
+=======
 class IngredientsMenu:
     def show_menu(self):
         print("Показать список ингридиентов?(напиши 'да/нет')")
@@ -369,7 +369,10 @@ class IngredientsMenu:
                 ingredients_menu.show_selected_ingredients()
 
     def show_selected_ingredients(self):
+        self.summury_ingredietns = []
         if hasattr(self, 'selected_meat'):
+            for i in self.selected_meat:
+                self.summury_ingredietns.append(i)
             print("Мясо:", self.selected_meat)
         if hasattr(self, 'selected_vegetables'):
             print("Овощи:", self.selected_vegetables)
